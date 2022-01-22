@@ -6,7 +6,7 @@
 #include <iomanip>
 
 template < class T >
-inline std::ostream& print (std::ostream& os, const std::vector<T>& v, const std::string& delimitter = " ")
+std::ostream& print (std::ostream& os, const std::vector<T>& v, const std::string& delimitter = " ")
 {
     for(unsigned int i=0;i<v.size();++i){
         os<<v.at(i);

@@ -42,36 +42,17 @@ class Graph
     Graph& operator=(const Graph& g);
 public:
 
-    /**
-     * @brief Graph default constructor. Sets Graph configuration
-     * @param bidirectional
-     * @param selfRelated
-     */
     Graph(){}
     ~Graph(){}
 
     void setSize (unsigned int vertices);
 
-    /**
-     * @brief pushbackVertex function adds new vertex to vector and to edges list
-     */
     void pushbackVertex(const Vertex& v = Vertex());
 
-    /**
-     * @brief edge
-     * @param begin
-     * @param end
-     * @return
-     */
     const double& edge(unsigned int begin, unsigned int end) const;
 
     double& edge(unsigned int begin, unsigned int end);
 
-    /**
-     * @brief vertex function returns vertex at position index in the vector
-     * @param index
-     * @return
-     */
     Vertex &vertex(unsigned int index);
 
     const Vertex& vertex(unsigned int index) const;
@@ -79,11 +60,6 @@ public:
 
     void random(unsigned int n);
 
-
-    /**
-     * @brief size function returns size of the graph
-     * @return
-     */
     unsigned int size() const;
 
     std::string& name();
@@ -98,23 +74,10 @@ public:
 
     void readFromFile(const std::string& path);
 
-    /**
-     * @brief toString Function returns a string representation of a graph.
-     * @return graph as string
-     */
     std::string toString() const ;
 
-    /**
-     * @brief computeShortestComputePath function calculate TSP length. Vertices in vertices vector are allowed to not be neighbours. If so,
-     * then algorithm will use findShortestPathBetweenVertices function.
-     * @param vertices
-     */
     double computeShortestComplexPath(unsigned int begin, std::vector<unsigned int> vertices, double*shortestPathVal = nullptr) const;
 
-
-    /**
-     * Friend to allow skipping flag checking when get access to the edge
-     */
     friend std::istream& operator>>(std::istream& str, Graph& graph);
 };
 
