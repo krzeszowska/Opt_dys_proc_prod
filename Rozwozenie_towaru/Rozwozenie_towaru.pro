@@ -8,21 +8,15 @@ CONFIG += c++11
 
 SOURCES += \
     Algorithms/Algorithm.cpp \
-    Algorithms/BruteforceAlgorithm.cpp \
     Algorithms/GeneticAlgorithm.cpp \
     Data/Data.cpp \
     Graph/Graph.cpp \
-    Graph/Vertex.cpp \
-    Helpers/VectorInteger.cpp \
     main.cpp \
 
 HEADERS += \
     Algorithms/Algorithm.h \
-    Algorithms/BruteforceAlgorithm.h \
     Algorithms/GeneticAlgorithm.h \
     Data/Data.h \
     Graph/Graph.h \
-    Graph/Vertex.h \
-    Helpers/VectorInteger.h \
     Operators.h \
 

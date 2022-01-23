@@ -14,8 +14,8 @@ int main(int argc, char *argv[])
 
     //inicjalizacja grafu
     Graph graph;
-    //graph.random(15);
-    graph.readFromFile("../odleglosci.csv");
+    graph.random(15);
+    //graph.readFromFile("../odleglosci.csv");
     std::cout<<"Ladowanie grafu..."<<std::endl;
     std::cout<<graph<<std::endl;
     std::cout<<"Zaladowanio."<<std::endl;
@@ -23,7 +23,6 @@ int main(int argc, char *argv[])
     //inicjalizacja algorytmu przetwarzania
     GeneticAlgorithm algorithm(graph);
 
-    algorithm.timeFactor() = 1; //wartosc z przedzialu <0..1>
     algorithm.startVertex() = 5; //wierzhcolek startu dla kazdej ciezarowki
     algorithm.truckNo() = 3; //liczba ciezarowek brana pod uwage
 
@@ -40,7 +39,6 @@ int main(int argc, char *argv[])
     std::cout<<"Wierzcholek poczatkowy: "<<algorithm.startVertex()<<std::endl;
     std::cout<<"L. Ciezarowek: "<<algorithm.truckNo()<<std::endl;
     std::cout<<"Punkty docelowe: "<<Data::formatAsAddress(address.at(algorithm.getDestinations()))<<std::endl;
-    std::cout<<"Wsp. wagi czasu: "<<algorithm.timeFactor()<<std::endl;
     std::cout<<"======================="<<std::endl;
     std::chrono::steady_clock::time_point begin = std::chrono::steady_clock::now();
 

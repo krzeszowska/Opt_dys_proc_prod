@@ -11,22 +11,6 @@ Algorithm::~Algorithm()
 
 }
 
-float &Algorithm::timeFactor()
-{
-    return _timeFactor;
-
-}
-
-float Algorithm::timeFactor() const
-{
-    return _timeFactor;
-}
-
-float Algorithm::distanceFactor()
-{
-    return 1-_timeFactor;
-}
-
 void Algorithm::initGraph()
 {
     _bestSolution = 0;

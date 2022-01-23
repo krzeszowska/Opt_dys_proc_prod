@@ -2,7 +2,6 @@
 #define GRAPH_H
 
 #include "Operators.h"
-#include "Vertex.h"
 
 #include <vector>
 #include <iostream>
@@ -28,15 +27,9 @@ std::ostream& operator<<(std::ostream& str, const std::vector<std::vector<T> >& 
 
 class Graph
 {
-    //nazwa grafu z pliku
-    std::string _name;
-    std::string _path;
 
     //lista krawedzi
     std::vector<std::vector<double>> edges;
-    //lista wierzcholkow
-    std::vector<Vertex> vertices;
-
 
     Graph(const Graph &g);
     Graph& operator=(const Graph& g);
@@ -47,28 +40,15 @@ public:
 
     void setSize (unsigned int vertices);
 
-    void pushbackVertex(const Vertex& v = Vertex());
 
     const double& edge(unsigned int begin, unsigned int end) const;
 
     double& edge(unsigned int begin, unsigned int end);
 
-    Vertex &vertex(unsigned int index);
-
-    const Vertex& vertex(unsigned int index) const;
-
 
     void random(unsigned int n);
 
     unsigned int size() const;
-
-    std::string& name();
-
-    const std::string& name() const;
-
-    std::string& path();
-
-    const std::string& path() const;
 
     void writeToFile(const std::string& path) const ;
 
@@ -82,18 +62,7 @@ public:
 };
 
 inline std::ostream& operator<<(std::ostream& str, const Graph& graph){
-    //print configuration
-    if(graph.name() == ""){
-        str << "###" << std::endl;
-    }else{
-        str<<graph.name()<<std::endl;
-    }
     str<<graph.size()<< " " <<std::endl;
-
-    for(unsigned int i=0;i<graph.size();++i){
-        str<<graph.vertex(i)<< " ";
-    }
-    str<<std::endl;
 
     //headers
     str<<"    ";
@@ -121,10 +90,6 @@ inline std::istream& operator>>(std::istream& str, Graph& graph){
     unsigned int size;
     str>>size;
     graph.setSize(size);
-
-    for(unsigned int i=0;i<graph.size();++i){
-        str>>graph.vertex(i);
-    }
 
     double buf;
     //skip header

@@ -15,8 +15,6 @@ public:
     double _bestDistanceSolution;
     double _currentDistanceSolution;
 
-    float _timeFactor = 0.5;
-
     std::vector<unsigned int> destinations = {1,4,7,8,19,6,30,5,15};
 
     unsigned int _startVertex = 0;
@@ -30,9 +28,6 @@ public:
     Algorithm(Graph& graph);
     virtual ~Algorithm();
 
-    float timeFactor() const;
-    float& timeFactor();
-    float distanceFactor();
     void initGraph();
 
     const std::string& name() const ;

@@ -1,5 +1,4 @@
 #include "GeneticAlgorithm.h"
-#include "Helpers/VectorInteger.h"
 
 std::vector<unsigned int> GeneticAlgorithm::mutate(const std::vector<unsigned int> &parent)
 {
@@ -84,40 +83,37 @@ std::vector<std::vector<unsigned int> >  GeneticAlgorithm::run()
 
         double bestPopulation = std::numeric_limits<double>::max();
         for(unsigned int k=0;k<population.size();++k){
+            std::vector<std::vector<unsigned int> > currentIndividualSolution;
+
             for(unsigned int i=0;i<truckNo;++i){
 
                 //only when set is not empty
                 double TPSWeight;
                 //take destination vertices from all destinations
                 std::vector<unsigned int> dests(population[k].begin()+splitters[i], population[k].begin()+splitters[i+1]);
-                //remove already visited vertices
-                for(unsigned int k=0;k<currentSolutionPath.size();++k){
-                    removeFromVector(dests,currentSolutionPath[k]);
+
+
+                //solve tsp
+                std::vector<unsigned int> truckPath = solveTSP(start, dests, TPSWeight);
+
+
+                currentIndividualSolution.push_back(truckPath);
+
+
+                if(currentTimeSolution() < TPSWeight){
+                    currentTimeSolution() = TPSWeight;
+
                 }
 
-                if(dests.size() > 0){
-                    //solve tsp
-                    std::vector<unsigned int> truckPath = solveTSP(start, dests, TPSWeight);
-
-
-                    currentSolutionPath.push_back(truckPath);
-                    //add trock tsp solution to sum
-                    currentDistanceSolution() += TPSWeight;
-
-                    if(currentTimeSolution() < TPSWeight){
-                        currentTimeSolution() = TPSWeight;
-
-                    }
-
-                    currentSolution() = currentTimeSolution() * timeFactor() + currentDistanceSolution() * distanceFactor();
-                }
+                currentSolution() = currentTimeSolution();
             }
-
-            //find best in population
+                //find best in population
             if(currentSolution() < bestPopulation){
                 bestPopulation = currentSolution();
                 parent = population[k];
+                currentSolutionPath=currentIndividualSolution;
             }
+
 
         }
 

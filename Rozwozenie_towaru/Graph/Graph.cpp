@@ -1,30 +1,10 @@
 #include "Graph.h"
 
 void Graph::setSize(unsigned int vertices)  {
-    this->vertices = std::vector<Vertex>();
     edges = std::vector<std::vector<double> >();
-
     for(unsigned int i=0;i<vertices;++i){
-        pushbackVertex(Vertex());
+        edges.push_back(std::vector<double>(vertices));
     }
-}
-
-void Graph::pushbackVertex(const Vertex &v)  {
-
-
-    //increate each vertex edge lengthGraph
-    for(unsigned int i=0;i<size();++i){
-        edges.at(i).push_back(0);
-    }
-
-    //create new vertex edge list
-    std::vector<double> vec;
-    for(unsigned int i=0;i<size()+1;++i){
-        vec.push_back(0);
-    }
-    //add new vertex edge list to the edges vector
-    edges.push_back(vec);
-    vertices.push_back(v);
 }
 
 const double &Graph::edge(unsigned int begin, unsigned int end) const {
@@ -44,13 +24,6 @@ double &Graph::edge(unsigned int begin, unsigned int end){
     return edges.at(begin).at(end);
 }
 
-Vertex &Graph::vertex(unsigned int index) {
-    return vertices.at(index);
-}
-
-const Vertex &Graph::vertex(unsigned int index) const {
-    return vertices.at(index);
-}
 
 void Graph::random(unsigned int n)
 {
@@ -66,23 +39,7 @@ void Graph::random(unsigned int n)
 }
 
 unsigned int Graph::size() const {
-    return vertices.size();
-}
-
-std::string &Graph::name()  {
-    return _name;
-}
-
-const std::string &Graph::name() const  {
-    return _name;
-}
-
-std::string &Graph::path()  {
-    return _path;
-}
-
-const std::string &Graph::path() const  {
-    return _path;
+    return edges.size();
 }
 
 void Graph::writeToFile(const std::string &path) const  {
@@ -110,7 +67,6 @@ void Graph::readFromFile(const std::string &path) {
 
     //close file
     stream.close();
-    _path = path;
 }
 
 std::string Graph::toString() const  {
