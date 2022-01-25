@@ -55,7 +55,7 @@ std::vector<std::string> Data::at(const std::vector<unsigned int>& ii) const
         if(ii[i] >= c_data.size()){
             throw std::range_error("Wartosc w wektorze argumentow przekroczyla wielkosc tablicy z danymi");
         }
-        ret[i] = at(ii[i]);
+        ret[i] = this->at(ii[i]);
     }
     return ret;
 }

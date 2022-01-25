@@ -74,9 +74,7 @@ std::vector<std::vector<unsigned int> >  GeneticAlgorithm::run()
 
     for(unsigned int generationCount=0; generationCount < 10000; generationCount++){
 
-        //calculate tsp!
-        currentDistanceSolution() = 0;
-        currentTimeSolution() = 0;
+        currentSolution() = 0;
         std::vector<std::vector<unsigned int> > currentSolutionPath;
         std::vector<std::vector<unsigned int> > population = createGeneration(parent, splitters);
 
@@ -100,27 +98,25 @@ std::vector<std::vector<unsigned int> >  GeneticAlgorithm::run()
                 currentIndividualSolution.push_back(truckPath);
 
 
-                if(currentTimeSolution() < TPSWeight){
-                    currentTimeSolution() = TPSWeight;
+                if(currentSolution() < TPSWeight){
+                    currentSolution() = TPSWeight;
 
                 }
 
-                currentSolution() = currentTimeSolution();
             }
-                //find best in population
+
+            //find best in population
             if(currentSolution() < bestPopulation){
                 bestPopulation = currentSolution();
                 parent = population[k];
                 currentSolutionPath=currentIndividualSolution;
             }
-
-
         }
 
         //check if current solution is better then the best
         if(bestSolution() > currentSolution()){
             bestTimeSolution() = currentTimeSolution();
-            bestDistanceSolution() = currentDistanceSolution();
+            //bestDistanceSolution() = currentDistanceSolution();
             bestSolution() = currentSolution();
             //save best solution paths
             solution = currentSolutionPath;
@@ -134,7 +130,6 @@ std::vector<std::vector<unsigned int> >  GeneticAlgorithm::run()
 
     currentSolution() = bestSolution();
     currentTimeSolution() = bestTimeSolution();
-    currentDistanceSolution() = bestDistanceSolution();
 
     std::cout<<"=== ROZWIAZANIE === "<<std::endl;
     std::cout<<"ALGORYTM GENETYCZNY"<<std::endl;
@@ -191,6 +186,7 @@ std::vector<unsigned int> GeneticAlgorithm::solveTSP(unsigned int start, std::ve
 
     shortestDistance = std::numeric_limits<double>::max();
 
+    //sprawdzamy, czy ustalona liczba generacji nie przewyzsza liczby istniejacych kombinacji
     unsigned int genCalculated = calculateRequiredGenCount(destinations.size());
 
     for(unsigned int i=0;i<genCalculated;++i){

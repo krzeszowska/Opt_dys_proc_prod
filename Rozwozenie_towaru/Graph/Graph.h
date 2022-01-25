@@ -31,6 +31,7 @@ class Graph
     //lista krawedzi
     std::vector<std::vector<double>> edges;
 
+    //wylaczenie operacji konstruktora kopiujacego i operatora przyrownania
     Graph(const Graph &g);
     Graph& operator=(const Graph& g);
 public:

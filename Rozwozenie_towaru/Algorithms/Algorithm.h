@@ -12,9 +12,6 @@ public:
     double _bestTimeSolution;
     double _currentTimeSolution;
 
-    double _bestDistanceSolution;
-    double _currentDistanceSolution;
-
     std::vector<unsigned int> destinations = {1,4,7,8,19,6,30,5,15};
 
     unsigned int _startVertex = 0;
@@ -67,9 +64,6 @@ public:
 
     double &bestTimeSolution() ;
     double &currentTimeSolution() ;
-
-    double &bestDistanceSolution() ;
-    double &currentDistanceSolution() ;
 
     template<class T>
     void perm(std::vector<std::vector<T>>& permutations,std::vector<T>& vector, unsigned int position = 0);

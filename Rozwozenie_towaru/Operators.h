@@ -18,19 +18,6 @@ std::ostream& print (std::ostream& os, const std::vector<T>& v, const std::strin
 }
 
 
-inline std::ostream& operator << (std::ostream& os, const std::vector<std::vector<float> >& v)
-{
-    os<<std::fixed;
-    for(unsigned int i=0;i<v.size();++i){
-        for(unsigned int j=0;j<v.at(i).size();++j){
-            os<<std::setprecision(0)<<std::setw(5)<<v.at(i).at(j);
-        }
-        os<<std::endl;
-    }
-    return os;
-}
-
-
 template < class T >
 std::ostream& operator << (std::ostream& os, const std::vector<T>& v)
 {

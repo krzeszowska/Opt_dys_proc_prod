@@ -12,8 +12,8 @@
 
 class Data
 {
-
     std::vector<std::string> c_data;
+
 public:
     Data(const std::string& path);
     Data();

@@ -82,12 +82,3 @@ double &Algorithm::currentTimeSolution()
     return _currentTimeSolution;
 }
 
-double &Algorithm::bestDistanceSolution()
-{
-    return _bestDistanceSolution;
-}
-
-double &Algorithm::currentDistanceSolution()
-{
-    return _currentDistanceSolution;
-}
