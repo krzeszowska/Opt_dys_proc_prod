@@ -1,5 +1,6 @@
 #include "Graph.h"
 
+
 void Graph::setSize(unsigned int vertices)  {
     edges = std::vector<std::vector<double> >();
     for(unsigned int i=0;i<vertices;++i){
@@ -69,11 +70,6 @@ void Graph::readFromFile(const std::string &path) {
     stream.close();
 }
 
-std::string Graph::toString() const  {
-    std::stringstream ss;
-    ss << (*this);
-    return ss.str();
-}
 
 double Graph::computeShortestComplexPath(unsigned int begin, std::vector<unsigned int> vertices, double *shortestPathVal) const {
     vertices.insert(vertices.begin(), begin);

@@ -65,11 +65,6 @@ std::string Data::at(unsigned int i) const
     return c_data.at(i);
 }
 
-std::string Data::toString() const  {
-    std::stringstream ss;
-    ss << (*this);
-    return ss.str();
-}
 
 const std::vector<std::string> &Data::data() const
 {
@@ -88,7 +83,10 @@ std::vector<std::string> Data::formatAsAddress(const std::vector<std::string> &d
     for(unsigned int i=0;i<data.size();++i){
         std::vector<std::string> ss = stdstringsplit(data[i], ',');
         if(ss.size() >= 3){
-            ret[i] = ss.at(1) + " ul. " + ss.at(2) + " " + ss.at(3);
+            if(i < data.size() - 1 )
+                ret[i] = ss.at(1) + " ul. " + ss.at(2) + " " + ss.at(3) + ";" + "\n";
+            else
+                ret[i] = ss.at(1) + " ul. " + ss.at(2) + " " + ss.at(3) + "; ";
         }else{
             ret[i] = data[i];
         }

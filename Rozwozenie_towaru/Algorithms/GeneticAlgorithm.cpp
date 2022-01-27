@@ -100,7 +100,6 @@ std::vector<std::vector<unsigned int> >  GeneticAlgorithm::run()
 
                 if(currentSolution() < TPSWeight){
                     currentSolution() = TPSWeight;
-
                 }
 
             }

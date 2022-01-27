@@ -27,7 +27,6 @@ std::ostream& operator<<(std::ostream& str, const std::vector<std::vector<T> >& 
 
 class Graph
 {
-
     //lista krawedzi
     std::vector<std::vector<double>> edges;
 
@@ -54,8 +53,6 @@ public:
     void writeToFile(const std::string& path) const ;
 
     void readFromFile(const std::string& path);
-
-    std::string toString() const ;
 
     double computeShortestComplexPath(unsigned int begin, std::vector<unsigned int> vertices, double*shortestPathVal = nullptr) const;
 

@@ -25,7 +25,6 @@ public:
     std::vector<std::string> at(const std::vector<unsigned int>& ii) const;
 
     std::string at(unsigned int i) const;
-    std::string toString() const;
 
     const std::vector<std::string>& data() const;
     std::vector<std::string>& data();
